@@ -3,9 +3,10 @@ import { Button } from "../ui/button/button";
 import { Input } from "../ui/input/input";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import StringStyles from "./string.module.css"
-import { swap } from "./utils-string";
+import { swap, maxLEN, stateCircle } from "./utils-string";
 import { DELAY_IN_MS } from "../../constants/delays";
 import { delay } from "../../utils";
+import { Circle } from "../ui/circle/circle";
 
 export const StringComponent: React.FC = () => {
 
@@ -53,11 +54,29 @@ export const StringComponent: React.FC = () => {
         <Input
           extraClass="mr-6"
           isLimitText={true}
+          maxLength={maxLEN}
+          value={inputValue}
+          onChange={onChange}
+          disabled={isLoader}
         />
         <Button
           text="Развернуть"
+          isLoader={isLoader}
+          onClick={onClickRevers}
+          disabled={!inputValue}
         />
       </form>
+      <ul className={StringStyles.list}>
+        {reversArray.map((letter: string, index: number) => {
+          return (
+            <Circle
+              key={index}
+              letter={letter}
+              index={index + 1}
+              state={stateCircle(currentIndex, index, reversArray)}
+            />)
+        })}
+      </ul>
     </SolutionLayout>
   );
 };
