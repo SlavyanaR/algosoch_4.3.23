@@ -50,7 +50,7 @@ export const StringComponent: React.FC = () => {
 
   return (
     <SolutionLayout title="Строка">
-      <form className={StringStyles.form}>
+      <form className={StringStyles.form} onSubmit={onClickRevers}>
         <Input
           extraClass="mr-6"
           isLimitText={true}
