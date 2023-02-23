@@ -86,7 +86,7 @@ export const StackPage: React.FC = () => {
 
   return (
     <SolutionLayout title="Стек">
-      <form className={StackPageSlyles.form}>
+      <form className={StackPageSlyles.form} onSubmit={(e) => e.preventDefault()}>
         <div className={StackPageSlyles.container}>
           <Input
           extraClass="mr-6"
